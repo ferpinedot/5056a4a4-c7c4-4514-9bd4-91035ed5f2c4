@@ -21,7 +21,7 @@ Clone this repository and do the following:
 
 ## Usage
 
-Once `venv` in active, the usage is fairly simple:
+|Once `venv` in active, the usage is fairly simple:
 
 * Download the data with the following command:
 
