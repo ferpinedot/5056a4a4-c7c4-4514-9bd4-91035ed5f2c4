@@ -1,9 +1,22 @@
-package example.c.model
+package example.d.model
 
-case class Box[A](value: A) {
+import example.a.model.Timestamp
 
-  def map[B](f: A => B): Box[B] = Box(f(value))
+trait Visitor {
+  def id: String
+  def createdAt: Timestamp
+  def getAgeInSeconds: Int = createdAt.seconds
+  def show(): Unit = this match {
+    case Visitor.Anonymous(id, _) => println(s"Anonymous user with id $id")
+    case Visitor.User(_, email, _) => println(s"User with email $email")
+  }
 
-  def flatMap(f: A => Box[A]): Box[A] = f(value)
+  def getEmail: Option[String]
+}
 
+object Visitor{
+  final case class Anonymous(id: String) extends Visitor {
+    override def getEmail: Option[String] = None}
+  final case class User(id: String, email: String, createdAt: Timestamp) extends Visitor
+  override def getEmail: Option[String] = Some(email)}
 }

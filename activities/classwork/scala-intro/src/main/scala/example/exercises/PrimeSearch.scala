@@ -12,13 +12,14 @@ object PrimeSearch {
   *    - Create your own tests for the isPrime function.
   *    - Return a string separated by commas: 2, 3, 5, 7, 11, 13
   */
+ def isPrime(i: Int): Boolean = {
+   if (i <= 1)
+     false
+   else if (i == 2)
+     true
+   else
+     !(2 to (i - 1)).exists(x => i % x == 0)
+ }                                               //> isPrime: (i: Int)Boolean
+  def getListOfPrimesToN(n : Int) = {
 
-  def isPrime(num: Long): Boolean = ???
-
-  def main(args: Array[String]): Unit = {
-    val Array(start, end) = args
-
-    println(start, end)
   }
-
-}
